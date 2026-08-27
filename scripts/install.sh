@@ -385,7 +385,6 @@ download_and_run() {
     fi
 
     temporary_file=$(mktemp "${TMPDIR:-/tmp}/fcc-install.XXXXXX") || fail "Unable to create a temporary file for $label."
-    print_command curl -fsSL "$url" -o "$temporary_file"
     if curl -fsSL "$url" -o "$temporary_file"; then
         :
     else
@@ -522,7 +521,6 @@ install_rtk() {
 
     [ -n "${HOME:-}" ] || fail "HOME is required to install RTK."
     temporary_file=$(mktemp "${TMPDIR:-/tmp}/fcc-rtk.XXXXXX") || fail "Unable to create a temporary RTK archive."
-    print_command curl -fsSL "$rtk_archive_url" -o "$temporary_file"
     if curl -fsSL "$rtk_archive_url" -o "$temporary_file"; then
         :
     else
